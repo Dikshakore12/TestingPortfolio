@@ -1,0 +1,36 @@
+@tailwind base;@tailwind components;@tailwind utilities;
+html{scroll-behavior:smooth;scroll-padding-top:5rem}
+body{@apply bg-ink text-zinc-100 font-sans antialiased overflow-x-hidden}
+:focus-visible{outline:2px solid #D4AF37;outline-offset:3px;border-radius:6px}
+.glass{@apply bg-surface/80 border border-borderline backdrop-blur-md rounded-2xl shadow-xl}
+.grid-bg{background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:56px 56px;animation:gridmove 12s linear infinite;-webkit-mask-image:radial-gradient(ellipse at 50% 30%,#000 20%,transparent 75%);mask-image:radial-gradient(ellipse at 50% 30%,#000 20%,transparent 75%)}
+@keyframes gridmove{to{background-position:56px 56px}}
+@keyframes spin{to{transform:rotate(360deg)}}
+.ring{background:conic-gradient(from 0deg,#D4AF37,transparent 40%,#F9DF9F,transparent 80%,#D4AF37);animation:spin 8s linear infinite}
+.btn{@apply inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition-all duration-200 hover:-translate-y-0.5}
+.btn-primary{@apply bg-accent text-ink hover:shadow-[0_8px_30px_-6px_#D4AF37]}
+.btn-ghost{@apply border border-borderline text-white hover:bg-surface hover:border-accent/50 hover:shadow-[0_0_15px_rgba(212,175,55,0.3)]}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.text-gradient {
+  background: linear-gradient(-45deg, #D4AF37, #F9DF9F, #D4AF37);
+  background-size: 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient 8s ease infinite;
+}
+
+@keyframes floatBlob {
+  0% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -50px) scale(1.1); }
+  66% { transform: translate(-20px, 20px) scale(0.9); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+.blob {
+  animation: floatBlob 15s ease-in-out infinite alternate;
+}
