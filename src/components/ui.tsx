@@ -46,11 +46,39 @@ export const Reveal = ({ children, delay = 0, className = '' }: { children: Reac
 )
 
 export const Section = ({ id, title, sub, children }: { id: string; title: string; sub?: string; children: ReactNode }) => (
-  <section id={id} className="relative mx-auto max-w-6xl px-5 py-20 sm:py-28">
-    <Reveal><h2 className="font-display text-3xl font-bold text-white sm:text-4xl">{title}</h2>
-      {sub && <p className="mt-3 max-w-xl text-zinc-400">{sub}</p>}
-      <motion.div className="mt-4 h-0.5 rounded bg-gradient-to-r from-accent to-champagne" initial={{ width: 0 }} whileInView={{ width: 64 }} viewport={{ once: true, margin: '-50px' }} transition={{ duration: 0.7, delay: 0.2, ease: 'easeOut' }} /></Reveal>
-    <div className="mt-10">{children}</div>
+  <section id={id} className="relative mx-auto max-w-6xl px-5 py-24 sm:py-32">
+    <Reveal className="flex flex-col items-start">
+      <motion.h2 
+        initial={{ opacity: 0, x: -40, filter: 'blur(10px)' }}
+        whileInView={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
+        viewport={{ once: true, margin: '-50px' }}
+        transition={{ duration: 0.8, ease: 'easeOut' }}
+        whileHover={{ scale: 1.02, color: '#FF1493', textShadow: '0 0 25px rgba(255,20,147,0.5)' }}
+        className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black uppercase tracking-tighter text-white origin-left cursor-default transition-colors duration-300"
+      >
+        {title}
+      </motion.h2>
+      {sub && (
+        <motion.p 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="mt-4 max-w-xl text-lg text-zinc-400 font-medium"
+        >
+          {sub}
+        </motion.p>
+      )}
+      <motion.div 
+        className="mt-6 h-1 rounded-full bg-gradient-to-r from-accent to-copper shadow-[0_0_10px_rgba(255,20,147,0.5)]" 
+        initial={{ width: 0 }} 
+        whileInView={{ width: 120 }} 
+        whileHover={{ width: 200 }}
+        viewport={{ once: true, margin: '-50px' }} 
+        transition={{ duration: 0.8, delay: 0.2, ease: 'easeOut' }} 
+      />
+    </Reveal>
+    <div className="mt-16">{children}</div>
   </section>
 )
 

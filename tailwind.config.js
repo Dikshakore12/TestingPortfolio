@@ -4,11 +4,11 @@ export default {
     extend: {
       colors: {
         ink: '#000000',
-        panel: '#0A0A0A',
+        panel: '#0a0a0a',
         surface: '#111111',
-        accent: '#D4AF37',
-        copper: '#B8860B',
-        champagne: '#F9DF9F',
+        accent: '#FF1493',
+        copper: '#FF69B4',
+        champagne: '#FFC0CB',
         borderline: '#222222',
         success: '#69C58A',
         error: '#F05A67',

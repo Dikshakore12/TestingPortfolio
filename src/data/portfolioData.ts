@@ -7,8 +7,8 @@ export const profile = {
   about: 'Skilled in functional, regression, smoke, sanity and exploratory testing, with practical exposure to Postman, Apache JMeter, Jira and Git/GitHub. I validate role-based workflows, payment and billing modules, and business logic across real-world client platforms. Seeking an entry-level QA Engineer / Software Tester role.',
   email: 'korediksha30@gmail.com', location: 'Nagpur, India',
   linkedin: 'https://linkedin.com/in/dikshakore21', github: 'https://github.com/Dikshakore12',
-  photo: '/profile.jpg',   // REPLACE PHOTO: overwrite public/profile.jpg
-  resume: '/resume.pdf',   // REPLACE RESUME: overwrite public/resume.pdf
+  photo: '/profile2.jpg',   // REPLACE PHOTO: overwrite public/profile2.jpg
+  resume: 'https://drive.google.com/file/d/1_oT6diKUx4Sx7K847gbIObjusqpxv-fm/view?usp=sharing',   // REPLACE RESUME: overwrite public/resume.pdf
 }
 export const stats = [{ v: '8.9', l: 'B.Tech CGPA' }, { v: '2026', l: 'Graduation year' }, { v: '4', l: 'Client platforms tested' }, { v: '2', l: 'Personal projects' }]
 export const skills = [
@@ -46,6 +46,7 @@ export const projects = [
     points: ['Designed and implemented the system using 3DES encryption.', 'Tested against unauthorized access attempts, validating a working proof-of-concept for leak prevention.'], link: '' },
 ]
 export const certs = [
+  { t: 'QA Tester Internship', o: 'Botmartz AI Solutions Pvt. Ltd.', y: '2026' },
   { t: 'Java Programming', o: 'NPTEL', y: '2024' }, { t: 'Python Programming', o: 'NPTEL', y: '2024' },
   { t: 'Website Design & Development Internship', o: 'iStudio', y: '2025' },
   { t: 'Employability Skill Training', o: 'Mahindra Pride Classroom, Naandi Foundation', y: '2025' },

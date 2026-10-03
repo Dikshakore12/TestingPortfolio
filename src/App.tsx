@@ -6,6 +6,7 @@ import { About, Skills, Approach, Experience, Projects, Certifications, Educatio
 import { Contact, Footer, BackToTop } from './components/Contact'
 import { Magnetic } from './components/interactions'
 import { Preloader } from './components/ui'
+import CustomCursor from './components/CustomCursor'
 import { Code2, Terminal, Cpu, Network } from 'lucide-react'
 
 // Advanced Background with AI Testing Video & Floating Tech Elements
@@ -61,6 +62,7 @@ export default function App() {
 
   return (
     <MotionConfig reducedMotion="user">
+      <CustomCursor />
       <Preloader />
       
       {/* Advanced AI Testing Video Background */}

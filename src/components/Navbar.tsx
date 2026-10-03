@@ -18,12 +18,14 @@ export default function Navbar() {
       <nav aria-label="Main" className="mx-auto flex max-w-7xl items-center justify-between px-6">
         {/* Logo Left */}
         <a href="#home" className="font-display text-2xl font-bold text-white tracking-tight flex items-center">
-          {'Diksha Kore'.split('').map((char, i) => (
-             <motion.span key={i} initial={{ opacity: 0, x: -5 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 1.5 + i * 0.05, duration: 0.3 }}>
-               {char === ' ' ? '\u00A0' : char}
-             </motion.span>
-           ))}
-          <motion.span initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 2.2 }} className="text-accent">.</motion.span>
+          <motion.img 
+            initial={{ opacity: 0, scale: 0.8 }} 
+            animate={{ opacity: 1, scale: 1 }} 
+            transition={{ delay: 1.5, duration: 0.5 }}
+            src="/profile.jpg" 
+            alt="Diksha Kore" 
+            className="w-10 h-10 rounded-full object-cover border-2 border-accent/50 shadow-[0_0_10px_rgba(255,20,147,0.3)]"
+          />
         </a>
         
         {/* Nav Links Center (Pill) */}

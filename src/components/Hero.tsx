@@ -1,63 +1,96 @@
 import { motion } from 'framer-motion'
 import { ArrowDown, Bug, CheckCircle2, Download, Repeat, Send, Workflow } from 'lucide-react'
 import { profile } from '../data/portfolioData'
-import { Magnetic, TiltCard } from './interactions'
+import { Magnetic } from './interactions'
 
 const chips = [
   { t: 'Test Passed', I: CheckCircle2, c: 'left-0 top-10', color: 'text-success', d: 0 }, { t: 'Bug Found', I: Bug, c: 'right-0 top-24', color: 'text-error', d: 0.8 },
-  { t: 'API Tested', I: Send, c: 'left-2 bottom-24', color: 'text-accent', d: 1.4 }, { t: 'Regression', I: Repeat, c: 'right-2 bottom-8', color: 'text-copper', d: 0.4 },
+  { t: 'API Tested', I: Send, c: 'left-2 bottom-32', color: 'text-accent', d: 1.4 }, { t: 'Regression', I: Repeat, c: 'right-2 bottom-12', color: 'text-copper', d: 0.4 },
 ]
 
 export default function Hero() {
-  const words = profile.headline.split(' ')
+  const names = profile.name.split(' ')
   return (
-    <section id="home" className="relative flex min-h-screen items-center overflow-hidden pt-24">
-      <div className="grid-bg absolute inset-0" aria-hidden />
-      <motion.div aria-hidden className="absolute -top-32 left-1/3 h-96 w-96 rounded-full bg-accent/20 blur-[120px]" animate={{ x: [0, 40, 0], y: [0, 30, 0] }} transition={{ duration: 14, repeat: Infinity }} />
-      <div className="relative mx-auto grid max-w-6xl items-center gap-12 px-5 pb-16 lg:grid-cols-[1.15fr_1fr]">
-        <div>
-          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }} className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-xs tracking-wider text-accent">
-            <span className="h-1.5 w-1.5 rounded-full bg-accent" />QA Engineer • Software Tester</motion.p>
-          <h1 className="mt-6 font-display text-4xl font-bold leading-[1.08] text-white sm:text-6xl">
-            {words.map((w, i) => <span key={i} className={`inline-block overflow-hidden pb-1 align-bottom ${i === 0 || i === 1 ? 'text-gradient' : ''}`}><motion.span className="inline-block pr-3" initial={{ y: '110%' }} animate={{ y: 0 }} transition={{ duration: 0.7, delay: 0.35 + i * 0.09, ease: [0.22, 1, 0.36, 1] }}>{w}</motion.span></span>)}
-          </h1>
-          <motion.p initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.1 }} className="mt-6 max-w-xl text-lg text-zinc-400">{profile.summary}</motion.p>
-          <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.3 }} className="mt-8 flex flex-wrap items-center gap-4">
+    <section id="home" className="relative flex min-h-screen items-center overflow-hidden pt-24 bg-ink">
+      <div className="grid-bg absolute inset-0 z-10 pointer-events-none" aria-hidden />
+      <motion.div aria-hidden className="absolute -top-32 left-1/3 h-96 w-96 rounded-full bg-accent/10 blur-[120px] z-0" animate={{ x: [0, 40, 0], y: [0, 30, 0] }} transition={{ duration: 14, repeat: Infinity }} />
+      <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-5 pb-16 lg:grid-cols-[1.3fr_1fr]">
+        
+        <div className="flex flex-col justify-center relative z-20">
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}
+            className="font-display text-xl sm:text-2xl md:text-3xl italic text-zinc-300 mb-2"
+          >
+            Elevating Software Quality,
+          </motion.p>
+          <motion.h1 
+            initial={{ opacity: 0, scale: 0.9, filter: 'blur(10px)' }} 
+            animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }} 
+            transition={{ delay: 0.2, duration: 0.8, ease: 'easeOut' }}
+            whileHover={{ scale: 1.02, textShadow: '0px 0px 20px rgba(255,20,147,0.4)' }}
+            className="text-6xl sm:text-7xl md:text-8xl lg:text-[110px] font-black uppercase text-white leading-[0.85] tracking-tighter origin-left cursor-default transition-all duration-300"
+          >
+            {names[0]}<br />{names[1]}
+          </motion.h1>
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}
+            className="mt-4 sm:mt-6 text-sm sm:text-lg md:text-2xl font-bold uppercase tracking-widest text-accent leading-relaxed"
+          >
+            {profile.roles.split('|')[0].trim()} &amp; {profile.roles.split('|')[1]?.trim() || 'QA Expert'}
+          </motion.h2>
+          <motion.p initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.1 }} className="mt-4 sm:mt-6 max-w-xl text-sm sm:text-base md:text-lg text-zinc-400">
+            {profile.summary}
+          </motion.p>
+          
+          <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.3 }} className="mt-6 sm:mt-8 flex flex-wrap items-center gap-3 sm:gap-4">
             <Magnetic>
-              <motion.a href="#experience" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="btn btn-primary"><Workflow size={16} />View My Work</motion.a>
+              <motion.a href="#experience" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="btn btn-primary pointer-events-auto text-xs sm:text-sm px-4 sm:px-6"><Workflow size={16} />View My Work</motion.a>
             </Magnetic>
             <Magnetic>
-              <motion.a href={profile.resume} download whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="btn btn-ghost"><Download size={16} />Download Resume</motion.a>
+              <motion.a href={profile.resume} download whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="btn btn-ghost pointer-events-auto text-xs sm:text-sm px-4 sm:px-6"><Download size={16} />Download Resume</motion.a>
             </Magnetic>
             <Magnetic>
-              <motion.a href="#contact" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="px-2 text-sm text-zinc-300 underline decoration-accent underline-offset-4 hover:text-white transition-colors">Let's Work Together</motion.a>
+              <motion.a href="#contact" whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="px-2 text-xs sm:text-sm text-zinc-300 underline decoration-accent underline-offset-4 hover:text-white transition-colors pointer-events-auto">Let's Work Together</motion.a>
             </Magnetic>
           </motion.div>
         </div>
-        <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.9, delay: 0.5 }} className="relative mx-auto w-full max-w-sm">
-          <TiltCard>
-            <motion.div animate={{ y: [0, -10, 0] }} transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }} className="relative aspect-square group">
-              {/* Spinning gradient rings */}
-              <div className="ring absolute inset-0 rounded-full blur-[4px] opacity-70 group-hover:opacity-100 transition-opacity duration-500" />
-              <div className="ring absolute inset-0 rounded-full blur-[1px] opacity-100" style={{ animationDirection: 'reverse', animationDuration: '10s' }} />
-              
-              {/* Dashed tech border */}
-              <motion.svg animate={{ rotate: 360 }} transition={{ duration: 25, repeat: Infinity, ease: 'linear' }} className="absolute inset-[-12px] h-[calc(100%+24px)] w-[calc(100%+24px)] text-accent/50 pointer-events-none" viewBox="0 0 100 100">
-                 <circle cx="50" cy="50" r="49" fill="none" stroke="currentColor" strokeWidth="0.5" strokeDasharray="4 4" />
-                 <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" strokeWidth="0.5" strokeDasharray="1 6" opacity="0.5" />
-              </motion.svg>
-              
-              <div className="absolute inset-[3px] rounded-full bg-ink overflow-hidden border border-accent/20">
-                <img src={profile.photo} alt="Portrait of Diksha Kore, QA Engineer" width={800} height={800} className="h-full w-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-110" />
-              </div>
-              
-              {/* Interactive glow inside */}
-              <div className="absolute inset-[3px] rounded-full shadow-[inset_0_0_50px_rgba(212,175,55,0.4)] pointer-events-none" />
-            </motion.div>
-          </TiltCard>
+
+        <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1, delay: 0.5, ease: 'easeOut' }} className="relative mx-auto w-full max-w-lg mt-12 lg:mt-0 flex justify-center items-end h-[60vh] md:h-[75vh] z-0">
+          
+          {/* Circular Badge - moved below API tested */}
+          <div className="absolute -left-4 md:-left-8 bottom-0 z-30 flex h-28 w-28 items-center justify-center rounded-full pointer-events-none">
+             <div className="absolute inset-0 animate-[spin_12s_linear_infinite]">
+               <svg viewBox="0 0 100 100" className="h-full w-full">
+                 <path id="curve" d="M 50, 50 m -40, 0 a 40,40 0 1,1 80,0 a 40,40 0 1,1 -80,0" fill="transparent" />
+                 <text className="text-[10.5px] font-bold tracking-[0.18em] text-zinc-300" fill="currentColor">
+                   <textPath href="#curve">BUILDING BETTER SOFTWARE THROUGH BETTER TESTING •</textPath>
+                 </text>
+               </svg>
+             </div>
+             <div className="text-accent bg-ink/80 p-3 rounded-full border border-white/10 backdrop-blur-md">
+               <Send size={20} />
+             </div>
+          </div>
+          
+          <motion.div 
+            className="relative h-full w-full flex justify-center"
+          >
+            <img 
+              src={profile.photo} 
+              alt="Portrait of Diksha Kore" 
+              style={{ 
+                WebkitMaskImage: 'radial-gradient(ellipse 45% 50% at 50% 50%, black 65%, transparent 100%)', 
+                maskImage: 'radial-gradient(ellipse 45% 50% at 50% 50%, black 65%, transparent 100%)' 
+              }}
+              className="h-full w-[120%] max-w-[120%] object-cover object-center mix-blend-lighten transform scale-110 filter contrast-125 brightness-90 saturate-110" 
+            />
+          </motion.div>
+          
           {chips.map(({ t, I, c, d }) => (
-            <motion.div key={t} className={`absolute ${c} z-10 flex items-center gap-2 rounded-full border border-white/10 bg-black/80 backdrop-blur-md px-4 py-2 text-sm font-medium text-white shadow-[0_4px_20px_rgba(0,0,0,0.5)] cursor-default transition-colors hover:border-accent hover:bg-black`} initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1, y: [0, -6, 0] }} whileHover={{ scale: 1.05, y: -2 }} transition={{ opacity: { delay: 1.4 + d }, scale: { delay: 1.4 + d }, y: { duration: 5, repeat: Infinity, delay: d } }}>
-              <I size={16} className="text-accent" />{t}</motion.div>))}
+            <motion.div key={t} className={`absolute ${c} z-30 flex items-center gap-1.5 sm:gap-2 rounded-full border border-white/10 bg-black/80 backdrop-blur-md px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-medium text-white shadow-[0_4px_20px_rgba(0,0,0,0.5)] cursor-default transition-colors hover:border-accent hover:bg-black`} initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1, y: [0, -6, 0] }} whileHover={{ scale: 1.05, y: -2 }} transition={{ opacity: { delay: 1.4 + d }, scale: { delay: 1.4 + d }, y: { duration: 5, repeat: Infinity, delay: d } }}>
+              <I size={14} className="text-accent sm:w-4 sm:h-4" />{t}
+            </motion.div>
+          ))}
         </motion.div>
       </div>
       <a href="#about" aria-label="Scroll to About" className="absolute bottom-6 left-1/2 hidden -translate-x-1/2 text-zinc-500 sm:block"><motion.span animate={{ y: [0, 8, 0] }} transition={{ duration: 2, repeat: Infinity }} className="block"><ArrowDown size={20} /></motion.span></a>
