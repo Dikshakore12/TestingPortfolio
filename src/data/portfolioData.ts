@@ -19,7 +19,7 @@ export const skills = [
   { group: 'Programming', items: ['Java', 'Python', 'HTML', 'CSS', 'JavaScript', 'Bootstrap'] },
 ]
 export const experience = {
-  role: 'QA Intern', company: 'BotMartz AI Solutions Pvt. Ltd.', period: 'June 2026 – Present',
+  role: 'QA Intern', company: 'BotMartz AI Solutions Pvt. Ltd.', period: 'April 2026 – September 2026',
   projects: [
     { name: 'HOAConnect Hub', sub: 'US-based HOA / Property Management platform', link: 'https://innovaihoa.com/', image: '/innovaihoa.png', points: [
       'On a live production platform (Communities, Buildings, Units, Residents), performed end-to-end functional, regression, UI/responsive, cross-browser and API testing (Postman) to catch defects before release, improving stability.',

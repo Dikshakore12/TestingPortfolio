@@ -14,7 +14,7 @@ export default function Hero() {
     <section id="home" className="relative flex min-h-screen items-center overflow-hidden pt-24 bg-ink">
       <div className="grid-bg absolute inset-0 z-10 pointer-events-none" aria-hidden />
       <motion.div aria-hidden className="absolute -top-32 left-1/3 h-96 w-96 rounded-full bg-accent/10 blur-[120px] z-0" animate={{ x: [0, 40, 0], y: [0, 30, 0] }} transition={{ duration: 14, repeat: Infinity }} />
-      <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-5 pb-16 lg:grid-cols-[1.3fr_1fr]">
+      <div className="relative mx-auto grid max-w-7xl items-center gap-8 px-5 pb-16 lg:grid-cols-[1.1fr_1fr]">
         
         <div className="flex flex-col justify-center relative z-20">
           <motion.p 
@@ -55,7 +55,7 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1, delay: 0.5, ease: 'easeOut' }} className="relative mx-auto w-full max-w-lg mt-12 lg:mt-0 flex justify-center items-end h-[60vh] md:h-[75vh] z-0">
+        <motion.div initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1, delay: 0.5, ease: 'easeOut' }} className="relative mx-auto w-full max-w-lg mt-12 lg:mt-0 flex justify-center lg:justify-start items-center h-[60vh] md:h-[75vh] z-0 lg:-translate-x-12 lg:-translate-y-24">
           
           {/* Circular Badge - moved below API tested */}
           <div className="absolute -left-4 md:-left-8 bottom-0 z-30 flex h-28 w-28 items-center justify-center rounded-full pointer-events-none">

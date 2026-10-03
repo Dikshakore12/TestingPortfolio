@@ -111,40 +111,56 @@ export function Approach() {
 }
 
 export function Experience() {
-  const [open, setOpen] = useState(0)
   return (
     <Section id="experience" title="Experience">
       <Reveal><h3 className="font-display text-xl sm:text-2xl font-bold text-white">{experience.role}, {experience.company}</h3><p className="mt-1 sm:mt-2 text-sm sm:text-base font-medium text-accent">{experience.period}</p></Reveal>
-      <div className="relative mt-8 sm:mt-10 border-l border-white/10 pl-5 sm:pl-8">
-        <motion.div className="absolute -left-px top-0 w-px origin-top bg-accent" initial={{ height: 0 }} whileInView={{ height: '100%' }} viewport={{ once: true, margin: '-50px' }} transition={{ duration: 1.4, ease: 'easeOut' }} />
+      <div className="mt-8 sm:mt-10 grid gap-6 md:grid-cols-2">
         {experience.projects.map((p, i) => (
-          <Reveal key={p.name} delay={i * 0.05} className="relative mb-5 sm:mb-6">
-            <motion.span initial={{ scale: 0 }} whileInView={{ scale: 1 }} viewport={{ once: true, margin: '-50px' }} transition={{ delay: 0.2 + (i * 0.1), type: 'spring' }} className="absolute -left-[27px] top-7 h-4 w-4 rounded-full border-[3px] border-accent bg-ink sm:-left-[40px]" />
-            <motion.div variants={hoverLift} initial="rest" whileHover="hover" className="glass overflow-hidden">
-              <button onClick={() => setOpen(open === i ? -1 : i)} aria-expanded={open === i} className="flex w-full items-center justify-between gap-3 sm:gap-4 p-5 sm:p-6 text-left">
-                <span><span className="block font-display text-lg sm:text-xl font-bold text-white">{p.name}</span><span className="mt-1 block text-xs sm:text-sm font-medium text-zinc-400">{p.sub}</span></span>
-                <motion.span animate={{ rotate: open === i ? 180 : 0 }}><ChevronDown className="text-accent" size={20} /></motion.span></button>
-              <AnimatePresence initial={false}>{open === i && (
-                <motion.ul initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.3, ease: 'easeInOut' }} className="space-y-3 sm:space-y-4 overflow-hidden px-5 sm:px-6 text-sm text-zinc-400">
-                  {p.points.map(t => <li key={t} className="flex gap-2 sm:gap-3 leading-relaxed"><span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" /><span>{t}</span></li>)}
-                  {p.image && (
-                    <motion.li initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.15, duration: 0.4 }} className="mt-5 mb-2 overflow-hidden rounded-xl border border-white/10 relative group">
-                      <div className="absolute inset-0 bg-accent/20 opacity-0 transition-opacity duration-300 group-hover:opacity-100 z-10 pointer-events-none" />
-                      <img src={p.image} alt={`${p.name} preview`} className="w-full h-auto max-h-[300px] object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105" loading="lazy" />
-                    </motion.li>
-                  )}
-                  {p.link && (
-                    <li className="mt-4 pb-2">
-                      <a href={p.link} target="_blank" rel="noopener noreferrer" className="btn btn-ghost inline-flex items-center gap-2 text-sm transition-all hover:bg-white/10 hover:shadow-[0_0_15px_rgba(var(--accent),0.5)]">
-                        <ExternalLink size={16} />
-                        {p.name.includes('Virtual Try-On') ? 'Try Live Demo ↗' : 'View Live Website ↗'}
+          <Reveal key={p.name} delay={i * 0.05} className="h-full">
+            <motion.div variants={hoverLift} initial="rest" whileHover="hover" className="glass overflow-hidden pb-4 sm:pb-5 h-full flex flex-col">
+              <div className="flex w-full items-start sm:items-center justify-between gap-3 sm:gap-4 p-5 sm:p-6 text-left cursor-default flex-col sm:flex-row">
+                <span>
+                  <span className="block font-display text-lg sm:text-xl font-bold text-white">{p.name}</span>
+                  <span className="mt-1 block text-xs sm:text-sm font-medium text-zinc-400">{p.sub}</span>
+                </span>
+                {p.link && (
+                  <a href={p.link} target="_blank" rel="noopener noreferrer" className="btn btn-ghost hidden sm:inline-flex items-center gap-2 text-xs transition-all hover:bg-white/10 shrink-0" aria-label="Visit project website">
+                    <ExternalLink size={14} /> Live
+                  </a>
+                )}
+              </div>
+              
+              <ul className="space-y-3 sm:space-y-4 px-5 sm:px-6 text-sm text-zinc-400 flex-1 flex flex-col">
+                {p.points.map(t => <li key={t} className="flex gap-2 sm:gap-3 leading-relaxed"><span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" /><span>{t}</span></li>)}
+                
+                {p.image && (
+                  <li className="mt-auto pt-4 relative group overflow-hidden rounded-xl border border-white/10 block">
+                    {p.link ? (
+                      <a href={p.link} target="_blank" rel="noopener noreferrer" className="block relative h-full w-full">
+                        <div className="absolute inset-0 bg-accent/20 opacity-0 transition-opacity duration-300 group-hover:opacity-100 z-10 pointer-events-none flex items-center justify-center">
+                          <span className="bg-black/80 text-white px-4 py-2 rounded-full font-semibold text-sm backdrop-blur-md opacity-0 group-hover:opacity-100 transition-all translate-y-4 group-hover:translate-y-0 flex items-center gap-2 border border-white/20">
+                            <ExternalLink size={16} /> Open Live Site
+                          </span>
+                        </div>
+                        <img src={p.image} alt={`${p.name} preview`} className="w-full h-auto max-h-[300px] object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105 cursor-pointer" loading="lazy" />
                       </a>
-                    </li>
-                  )}
-                  <li className="h-2" />
-                </motion.ul>)}</AnimatePresence>
+                    ) : (
+                      <img src={p.image} alt={`${p.name} preview`} className="w-full h-auto max-h-[300px] object-cover object-top" loading="lazy" />
+                    )}
+                  </li>
+                )}
+                
+                {p.link && (
+                  <li className="mt-4 pb-2 sm:hidden">
+                    <a href={p.link} target="_blank" rel="noopener noreferrer" className="btn btn-ghost inline-flex items-center gap-2 text-sm transition-all w-full justify-center">
+                      <ExternalLink size={16} /> Open Live Website
+                    </a>
+                  </li>
+                )}
+              </ul>
             </motion.div>
-          </Reveal>))}
+          </Reveal>
+        ))}
       </div>
     </Section>
   )
