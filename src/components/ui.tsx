@@ -53,7 +53,7 @@ export const Section = ({ id, title, sub, children }: { id: string; title: strin
         whileInView={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
         viewport={{ once: true, margin: '-50px' }}
         transition={{ duration: 0.8, ease: 'easeOut' }}
-        whileHover={{ scale: 1.02, color: '#FF1493', textShadow: '0 0 25px rgba(255,20,147,0.5)' }}
+        whileHover={{ scale: 1.02, color: '#D4AF37', textShadow: '0 0 25px rgba(212,175,55,0.5)' }}
         className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black uppercase tracking-tighter text-white origin-left cursor-default transition-colors duration-300"
       >
         {title}
@@ -70,7 +70,7 @@ export const Section = ({ id, title, sub, children }: { id: string; title: strin
         </motion.p>
       )}
       <motion.div 
-        className="mt-6 h-1 rounded-full bg-gradient-to-r from-accent to-copper shadow-[0_0_10px_rgba(255,20,147,0.5)]" 
+        className="mt-6 h-1 rounded-full bg-gradient-to-r from-accent to-copper shadow-[0_0_10px_rgba(212,175,55,0.5)]"
         initial={{ width: 0 }} 
         whileInView={{ width: 120 }} 
         whileHover={{ width: 200 }}

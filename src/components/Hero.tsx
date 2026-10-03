@@ -27,7 +27,7 @@ export default function Hero() {
             initial={{ opacity: 0, scale: 0.9, filter: 'blur(10px)' }} 
             animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }} 
             transition={{ delay: 0.2, duration: 0.8, ease: 'easeOut' }}
-            whileHover={{ scale: 1.02, textShadow: '0px 0px 20px rgba(255,20,147,0.4)' }}
+            whileHover={{ scale: 1.02, textShadow: '0px 0px 20px rgba(212,175,55,0.4)' }}
             className="text-6xl sm:text-7xl md:text-8xl lg:text-[110px] font-black uppercase text-white leading-[0.85] tracking-tighter origin-left cursor-default transition-all duration-300"
           >
             {names[0]}<br />{names[1]}

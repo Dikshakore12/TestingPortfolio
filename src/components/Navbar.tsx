@@ -24,7 +24,7 @@ export default function Navbar() {
             transition={{ delay: 1.5, duration: 0.5 }}
             src="/profile.jpg" 
             alt="Diksha Kore" 
-            className="w-10 h-10 rounded-full object-cover border-2 border-accent/50 shadow-[0_0_10px_rgba(255,20,147,0.3)]"
+            className="w-10 h-10 rounded-full object-cover border-2 border-accent/50 shadow-[0_0_10px_rgba(212,175,55,0.3)]"
           />
         </a>
         
